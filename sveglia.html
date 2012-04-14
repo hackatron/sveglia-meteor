@@ -1,0 +1,24 @@
+<head>
+  <link href='/favicon.ico' rel='icon' type='image/x-icon' />
+</head>
+
+<body>
+  {{> timers}}
+</body>
+
+<template name="timers">
+  <div class="timers">
+    <h1>Sveglia</h1>
+    {{#each timers}}
+      {{> timer}}
+    {{/each}}
+    <input type="text" class="expiration_date" />
+    <input type="button" class="submit" value="Create" />
+  </div>
+</template>
+
+<template name="timer">
+  <div class="timer">
+    <span class="seconds_left">{{seconds_left}}</span>
+  </div>
+</template>
