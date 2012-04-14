@@ -1,20 +1,13 @@
 Meteor.startup(function() {
   Timers.find().forEach(function(timer) {
-    if(timer.time_left >= 0) {
-      Meteor.call('start_timer', timer)
-    }
-  })
-
-  var query = Timers.find()
-  var handle = query.observe({
-    added: function(timer) {
+    if(timer.time_left > 0) {
       Meteor.call('start_timer', timer)
     }
   })
 })
 
 Template.timers.timers = function () {
-  return Timers.find({}, {sort: {time_left: 1}});
+  return Timers.find({}, {sort: {time_left: -1}});
 };
 
 Template.timer.seconds_left = function () {

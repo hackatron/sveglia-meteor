@@ -9,11 +9,11 @@
 <template name="timers">
   <div class="timers">
     <h1>Sveglia</h1>
+    <input type="text" class="expiration_date" />
+    <input type="button" class="submit" value="Create" />
     {{#each timers}}
       {{> timer}}
     {{/each}}
-    <input type="text" class="expiration_date" />
-    <input type="button" class="submit" value="Create" />
   </div>
 </template>
 
