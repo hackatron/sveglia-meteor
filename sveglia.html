@@ -1,5 +1,6 @@
 <head>
   <link href='/favicon.ico' rel='icon' type='image/x-icon' />
+  <script type="text/javascript" src="date-en-US.js"></script>
 
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
@@ -19,12 +20,14 @@
 </body>
 
 <template name="timers">
-  <div class="row">
-    <form class="well form-inline">
-      <input type="text" class="name" placeholder="Name"></input>
-      <input type="text" class="expires_at" placeholder="Number of seconds"></input>
+  <div class="row well">
+    <form class="form-inline">
+      <input type="text" id="name" placeholder="Name"></input>
+      <input type="text" id="date" placeholder="Date"></input>
       <input type="button" class="submit btn" value="Create"></input>
     </form>
+
+    <p id="parsed_date">Date: {{parsed_date}}</p>
   </div>
 
   <div class="row">
@@ -49,6 +52,6 @@
 <template name="timer">
   <tr>
     <td>{{name}}</td>
-    <td>{{seconds_left}}</td>
+    <td>{{expires_in}}</td>
   </tr>
 </template>
