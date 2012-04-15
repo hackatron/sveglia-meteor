@@ -1,24 +1,54 @@
 <head>
   <link href='/favicon.ico' rel='icon' type='image/x-icon' />
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">
+          Sveglia
+        </a>
+      </div>
+    </div>
+  </div>
 </head>
 
 <body>
-  {{> timers}}
+  <div class="container">
+    {{> timers}}
+  </div>
 </body>
 
 <template name="timers">
-  <div class="timers">
-    <h1>Sveglia</h1>
-    <input type="text" class="expires_at" />
-    <input type="button" class="submit" value="Create" />
-    {{#each timers}}
-      {{> timer}}
-    {{/each}}
+  <div class="row">
+    <form class="well form-inline">
+      <input type="text" class="name" placeholder="Name"></input>
+      <input type="text" class="expires_at" placeholder="Number of seconds"></input>
+      <input type="button" class="submit btn" value="Create"></input>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="timers span4 offset4">
+      <table class="table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Time Left</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each timers}}
+            {{> timer}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <template name="timer">
-  <div class="timer">
-    <span class="seconds_left">{{seconds_left}}</span>
-  </div>
+  <tr>
+    <td>{{name}}</td>
+    <td>{{seconds_left}}</td>
+  </tr>
 </template>

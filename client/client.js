@@ -21,7 +21,8 @@ Template.timer.seconds_left = function () {
 Template.timers.events = {
   'click .submit': function () {
     var input = parseFloat($('input.expires_at').val());
+    var name = $('input.name').val()
     var expires_at = input + now();
-    Timers.insert({expires_at: expires_at});
+    Timers.insert({expires_at: expires_at, name: name});
   }
 };
