@@ -1,23 +1,27 @@
-Meteor.startup(function() {
-  Timers.find().forEach(function(timer) {
-    if(timer.time_left > 0) {
-      Meteor.call('start_timer', timer)
-    }
-  })
+Meteor.startup(function(){
+  Meteor.setInterval(function() {
+    Session.set('now', now());
+  }, 0);
 })
 
 Template.timers.timers = function () {
-  return Timers.find({}, {sort: {time_left: -1}});
+  return Timers.find({}, {sort: {expires_at: -1}});
 };
 
 Template.timer.seconds_left = function () {
-  return this.time_left
+  var seconds_left = this.expires_at - Session.get('now');
+  if(seconds_left > 0) {
+    return seconds_left
+  }
+  else {
+    return 0
+  }
 }
 
 Template.timers.events = {
   'click .submit': function () {
-    var input = parseFloat($('input.expiration_date').val());
-    var expires_at = input + now()
+    var input = parseFloat($('input.expires_at').val());
+    var expires_at = input + now();
     Timers.insert({expires_at: expires_at});
   }
 };
