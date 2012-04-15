@@ -12,7 +12,7 @@ Template.timer.expires_in = function () {
   var expires_in = (this.expires_at - Session.get('now'));
 
   if(expires_in > 0) {
-    return to_string(expires_in);
+    return to_time(expires_in);
   }
   else {
     return 0
