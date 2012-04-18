@@ -10,6 +10,7 @@ sveglia.js defines code that runs on both the server and the client.
 There are the Timers collection creation
 
 	Timers = new Meteor.Collection('timers');
+	
 and a helper function to retrieve the current time
 
 	var now = function() {
