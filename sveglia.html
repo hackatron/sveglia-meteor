@@ -14,13 +14,20 @@
 
 <body>
   <div class="container">
-    {{> timers}}
-    {{> timer_templates}}
+    <div class="row">
+      <div class="span6">
+        {{> timers}}
+      </div>
+      <div class="span6">
+        {{> timer_templates}}
+      </div>
+    </div>
   </div>
 </body>
 
 <template name="timers">
-  <div class="row well">
+  <h2>Timers</h2>
+  <div class="well">
     <form class="form-inline">
       <input type="text" id="name" placeholder="Name"></input>
       <input type="text" id="date" placeholder="Date"></input>
@@ -30,22 +37,20 @@
     <p id="parsed_date">Date: {{parsed_date}}</p>
   </div>
 
-  <div class="row">
-    <div class="timers span4 offset4">
-      <table class="table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Time Left</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each timers}}
-            {{> timer}}
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
+  <div class="timers">
+    <table class="table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Time Left</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each timers}}
+          {{> timer}}
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -57,7 +62,8 @@
 </template>
 
 <template name="timer_templates">
-  <div class="row well">
+  <h2>Timer templates</h2>
+  <div class="well">
     <form id="timer_template_form" class="form-inline">
       <input type="text" id="name" placeholder="Name"></input>
       <input type="text" id="date" placeholder="Date"></input>
@@ -67,22 +73,20 @@
     <p id="parsed_date">Date: {{parsed_date}}</p>
   </div>
 
-  <div class="row">
-    <div class="timer_templates span4 offset4">
-      <table class="table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Duration</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each timer_templates}}
-            {{> timer_template}}
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
+  <div class="timer_templates">
+    <table class="table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each timer_templates}}
+          {{> timer_template}}
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -90,5 +94,6 @@
   <tr>
     <td>{{name}}</td>
     <td>{{duration}}</td>
+    <td><input type="button" id="{{id}}" class="submit btn" value="Create timer"></input></td>
   </tr>
 </template>
