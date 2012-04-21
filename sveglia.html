@@ -15,6 +15,7 @@
 <body>
   <div class="container">
     {{> timers}}
+    {{> timer_templates}}
   </div>
 </body>
 
@@ -52,5 +53,42 @@
   <tr>
     <td>{{name}}</td>
     <td>{{expires_in}}</td>
+  </tr>
+</template>
+
+<template name="timer_templates">
+  <div class="row well">
+    <form id="timer_template_form" class="form-inline">
+      <input type="text" id="name" placeholder="Name"></input>
+      <input type="text" id="date" placeholder="Date"></input>
+      <input type="button" id="create" class="submit btn" value="Create"></input>
+    </form>
+
+    <p id="parsed_date">Date: {{parsed_date}}</p>
+  </div>
+
+  <div class="row">
+    <div class="timer_templates span4 offset4">
+      <table class="table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each timer_templates}}
+            {{> timer_template}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+<template name="timer_template">
+  <tr>
+    <td>{{name}}</td>
+    <td>{{duration}}</td>
   </tr>
 </template>
