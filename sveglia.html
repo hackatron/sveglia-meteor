@@ -66,11 +66,9 @@
   <div class="well">
     <form id="timer_template_form" class="form-inline">
       <input type="text" id="name" placeholder="Name"></input>
-      <input type="text" id="date" placeholder="Date"></input>
-      <input type="button" id="create" class="submit btn" value="Create"></input>
+      <input type="text" id="date" placeholder="Duration"></input>
+      <input type="button" id="create" class="submit btn create-template-timer" value="Create"></input>
     </form>
-
-    <p id="parsed_date">Date: {{parsed_date}}</p>
   </div>
 
   <div class="timer_templates">
@@ -93,7 +91,7 @@
 <template name="timer_template">
   <tr>
     <td>{{name}}</td>
-    <td>{{duration}}</td>
-    <td><input type="button" id="{{id}}" class="submit btn" value="Create timer"></input></td>
+    <td>{{parsed_duration}}</td>
+    <td><input type="button" id="{{_id}}" class="submit btn create-timer" value="Create timer"></input></td>
   </tr>
 </template>
