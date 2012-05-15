@@ -3,7 +3,7 @@ Template.timers.timers = function () {
 };
 
 Template.timer.expires_in = function () {
-  var expires_in = (this.expires_at - Session.get('now').getTime());
+  var expires_in = (this.expires_at - Session.get('now').getTimeRounded());
 
   if(expires_in > 0) {
     return to_time(expires_in);
@@ -26,8 +26,8 @@ Template.timers.parsed_date = function () {
 
 Template.timers.events = {
   'click input.submit': function () {
-    var expires_at = Date.parse(Session.get('input_date')).getTime();
-    var name = $('input#name').val()
+    var expires_at = Date.parse(Session.get('input_date')).getTimeRounded();
+    var name = $('input#name').val();
     Timers.insert({expires_at: expires_at, name: name});
   },
 
