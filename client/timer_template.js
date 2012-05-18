@@ -15,10 +15,9 @@ Template.timer_templates.events = {
     TimerTemplates.insert({duration: duration - (new Date()).getTimeRounded(), name: name});
   },
 
-  'click input.create-timer': function (event) {
-    var template = TimerTemplates.findOne($(event.target).attr('id'))
-    var expires_at = template.duration + (new Date()).getTimeRounded();
-    Timers.insert({expires_at: expires_at, name: template.name});
+  'click input.create-timer': function () {
+    var expires_at = this.duration + (new Date()).getTimeRounded();
+    Timers.insert({expires_at: expires_at, name: this.name});
   },
 
   'keyup input#date': function () {
